@@ -39,7 +39,7 @@ public class OrderService {
 
         // communicate with inventory service to check if in stock
         InventoryResponse[] inventoryResponseArr = webClientBuilder.build().get()
-                .uri("http://localhost:8082/api/inventory", uriBuilder -> uriBuilder
+                .uri("http://inventory-service/api/inventory", uriBuilder -> uriBuilder
                         .queryParam("skuCodes", skuCodes)
                         .build())
                 .retrieve() //  initiates the HTTP request to URI and returns a ResponseSpec object
