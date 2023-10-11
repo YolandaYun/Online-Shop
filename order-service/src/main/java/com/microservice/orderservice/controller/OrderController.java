@@ -22,6 +22,7 @@ public class OrderController {
     @TimeLimiter(name = "inventory") // timeout
     @Retry(name = "inventory")
     public CompletableFuture<String> placeOrder(@RequestBody OrderRequest orderRequest) {
+        // asynchronously place order
         return CompletableFuture.supplyAsync(() -> orderService.placeOrder(orderRequest));
     }
     public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException runtimeException) {
